@@ -5,6 +5,6 @@ Sentry.init({
   integrations: [
    //Sentry.feedbackIntegration({
       //colorScheme: "system",
-    }),
+    //}),
   ],
 });
