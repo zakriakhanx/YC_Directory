@@ -41,7 +41,7 @@ const StartupForm = () => {
           description: "Your startup pitch has been created successfully",
         });
 
-        router.push(`/startup/${result._id}`);
+        // router.push(`/startup/${result._id}`);
       }
 
       return result;
