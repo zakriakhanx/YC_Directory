@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# YC Directory - Startup Pitching Platform
+
+YC Directory is a full-stack web application that allows users to pitch their startups, browse other innovative ideas, and connect with fellow entrepreneurs. It's built with Next.js, Sanity, and NextAuth, providing a seamless and interactive experience for showcasing and discovering new ventures.
+
+## Features
+
+-   **User Authentication:** Secure sign-up and login functionality using NextAuth.js.
+-   **Create & Share Pitches:** Authenticated users can create detailed startup pitches using a Markdown editor.
+-   **Browse & Discover:** View a directory of all submitted startups.
+-   **Search Functionality:** Easily search for specific startups or categories.
+-   **Headless CMS:** Content is managed through Sanity.io, with a built-in studio at `/studio`.
+-   **Error Monitoring:** Integrated with Sentry for real-time error tracking.
+
+## Tech Stack
+
+-   **Framework:** [Next.js](https://nextjs.org/) (v15)
+-   **Language:** [TypeScript](https://www.typescriptlang.org/)
+-   **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+-   **CMS:** [Sanity.io](https://www.sanity.io/)
+-   **Authentication:** [NextAuth.js](https://next-auth.js.org/) (v5)
+-   **Error Monitoring:** [Sentry](https://sentry.io/)
 
 ## Getting Started
 
-First, run the development server:
+Follow these instructions to get a local copy of the project up and running for development and testing purposes.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Prerequisites
+
+-   [Node.js](https://nodejs.org/en/) (v20 or later)
+-   A package manager like `npm` or `yarn`
+
+### Installation
+
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/your-username/yc_directory.git
+    cd yc_directory
+    ```
+
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+
+3.  **Set up environment variables:**
+
+    Create a `.env.local` file in the root of your project and add the following environment variables. You can get these values from your Sanity project dashboard and your chosen OAuth provider (e.g., GitHub, Google).
+
+    ```env
+    # Sanity
+    NEXT_PUBLIC_SANITY_PROJECT_ID=""
+    NEXT_PUBLIC_SANITY_DATASET=""
+    NEXT_PUBLIC_SANITY_API_VERSION=""
+    SANITY_API_READ_TOKEN=""
+    SANITY_API_WRITE_TOKEN=""
+
+    # NextAuth
+    AUTH_SECRET=""
+    AUTH_GITHUB_ID=""
+    AUTH_GITHUB_SECRET=""
+    ```
+
+4.  **Generate Sanity types:**
+
+    Before running the development server, you need to generate TypeScript types from your Sanity schema.
+
+    ```bash
+    npm run typegen
+    ```
+
+5.  **Run the development server:**
+    ```bash
+    npm run dev
+    ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Sanity Studio
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This project includes a built-in Sanity Studio for content management. To access the studio:
 
-## Learn More
+1.  Make sure your development server is running.
+2.  Navigate to [http://localhost:3000/studio](http://localhost:3000/studio).
 
-To learn more about Next.js, take a look at the following resources:
+From the studio, you can manage users, startups, and other content types defined in the schema.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The easiest way to deploy this Next.js application is to use the [Vercel Platform](https://vercel.com/new).
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+-   Push your code to a Git repository (GitHub, GitLab, Bitbucket).
+-   Import the project into Vercel.
+-   Vercel will automatically detect that you are using Next.js and will handle the build process.
+-   **Important:** Remember to add your environment variables to the Vercel project settings.
